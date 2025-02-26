@@ -5,10 +5,14 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 import { ArrowRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
+import { Marquee } from "@/components/magicui/marquee";
+import Testimonial from "@/components/ui/testimonialcard";
+import FeaturesSectionDemo from "@/components/ui/aminities";
 
 export default function Home() {
   return (
     <div>
+      {/* Landing page */}
       <section className="flex flex-col justify-center text-center w-full min-h-[calc(100vh-69px)] items-center">
         <h1 className="text-[clamp(6vh,5vw,7rem)] font-medium p-3 md:p-3">
           Your <AuroraText>Dream Wedding</AuroraText> Begins Here
@@ -16,7 +20,7 @@ export default function Home() {
         <div>
           <Image src={myicon} alt="wedding" width={500} height={500} />
         </div>
-        <p className="text-[clamp(2vh,1em,2em)]  max-w-3xl p-2">
+        <p className="text-[clamp(2vh,1em,2em)] dark:text-white text-gray-500 max-w-3xl p-2">
           Discover the perfect venue for your special day. We provide a
           spacious, elegant marriage mahal designed to turn your wedding into an
           unforgettable celebration.
@@ -34,34 +38,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+            {/* Aminities */}
+      <section className=" items-center w-full min-h-[calc(100vh-69px)]">
+        <FeaturesSectionDemo
+          children={<AuroraText className="text-3xl">Why Us?</AuroraText>}
+        />
+      </section>
 
-      <section className="flex justify-center text-center items-center w-full min-h-[calc(100vh-69px)]">
-        <div>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-          <p>ssqsaas</p>
-        </div>
-      </section>
-      <section className="flex justify-center text-center items-center w-full min-h-[calc(100vh-69px)]">
-        <div>
-          
-        </div>
-      </section>
+      {/* Testimonial */}
+      <Testimonial
+        children={<AuroraText className="text-3xl">Testimonials</AuroraText>}
+      />
     </div>
   );
-}
-
-{
-  /* <section class="flex flex-col items-center justify-center min-h-screen text-center">
-  <h1 class="text-5xl font-bold mb-4">Your Dream Wedding Begins Here</h1>
-  <p class="text-lg text-gray-600 max-w-xl">
-    Discover the perfect venue for your special day. We provide a spacious, elegant marriage mahal designed to turn your wedding into an unforgettable celebration.  
-  </p>
-</section> */
 }

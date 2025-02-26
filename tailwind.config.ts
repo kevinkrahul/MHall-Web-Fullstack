@@ -14,6 +14,10 @@ export default {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
+			  borderrose: {
+				DEFAULT: 'hsl(var(--border-rose))',
+				foreground: 'hsl(var(--border-rose-foreground))'
+			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'

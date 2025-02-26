@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/themeprovider/theme-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
         >          
         <Header/>
           {children}
+          <Footer/>
         </ThemeProvider>
       </body>
     </html>

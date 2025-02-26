@@ -31,8 +31,9 @@ const useGetTheme = () => {
   return resolvedTheme;
 };
 
+export const Navigation = ["Home", "About", "Gallery", "Guidlines", "Contact"];
+
 const Header = () => {
-  const Navigation = ["Home", "About", "Gallery", "Guidlines", "Contact"];
   const { resolvedTheme } = useGetTheme();
   const [logo, setLogo] = useState(Logo);
   useEffect(() => {
