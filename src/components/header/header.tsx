@@ -44,7 +44,7 @@ const Header = () => {
   }, [resolvedTheme]);
 
   return (
-    <header className="bg-pink-50 p-4 flex justify-center items-center">
+    <header className="sticky top-0 w-full z-50 bg-pink-50 dark:bg-neutral-900 p-4 flex justify-center items-center">
       <a className="mr-2 md:hidden">
         <div className="">
           {SHEET_SIDES.map((side) => (
@@ -111,7 +111,7 @@ const Header = () => {
         <NavigationMenuList className="gap-6">
           {Navigation.map((items, index) => (
             <NavigationMenuItem key={index}>
-              <Link href={`/${items.toLowerCase()}`} legacyBehavior passHref>
+              <Link href={ items.toLowerCase()==="home"?"/":`/${items.toLowerCase()}`} legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   {items}
                 </NavigationMenuLink>
