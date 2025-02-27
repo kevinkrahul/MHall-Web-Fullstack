@@ -1,7 +1,7 @@
 "use server";
 // import { Prisma } from "@prisma/client";
-import prisma from "../lib/prisma";
-import { Database } from "../../database.types";
+// import prisma from "../lib/prisma";
+// import { Database } from "../../database.types";
 
 
 // Get Record

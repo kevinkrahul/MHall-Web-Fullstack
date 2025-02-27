@@ -1,7 +1,6 @@
 "use client";
-//@ts-ignore
+// @ts-expect-error: Type definitions missing for react-day-picker
 import { DayPicker } from "react-day-picker";
-import { format } from "date-fns";
 import { Calendar } from "lucide-react";
 import "react-day-picker/dist/style.css";
 
@@ -19,7 +18,7 @@ const BOOKED_DATES = [
 
 const today = new Date();
 
-const isPastDate = (date: Date) => date < today;
+// const isPastDate = (date: Date) => date < today;
 
 export function DatePicker() {
   return (

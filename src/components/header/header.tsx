@@ -9,10 +9,10 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import {
   Sheet,
-  SheetClose,
+  // SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
+  // SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -129,7 +129,7 @@ const Header = () => {
       </a>
 
       <Link href="/" className="w-full justify-start items-center">
-        <Image src={Logo} alt={"Kv logo"} width={35} height={35} />
+        <Image src={logo} alt={"Kv logo"} width={35} height={35} />
       </Link>
       <NavigationMenu className="hidden md:block">
         <NavigationMenuList className="gap-6">

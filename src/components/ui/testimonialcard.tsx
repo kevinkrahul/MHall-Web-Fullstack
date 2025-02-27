@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
 import { ReactNode } from "react";
+import { AuroraText } from "../magicui/aurora-text";
 
 
 const reviews =[
@@ -57,14 +58,14 @@ const reviews =[
 
 
 const ReviewCard = ({
-    id,
-    img,
+    // id,
+    // img,
     name,
     username,
     body,
   }: {
-    id:number;
-    img?: string;
+    // id:number;
+    // img?: string;
     name: string;
     username?: string;
     body: string;
@@ -99,7 +100,7 @@ const Testimonial=({children}:{children:ReactNode})=>{
     return(
         <section className="flex flex-col  items-center w-full min-h-[calc(100vh-69px)]">
         <h1 className="text-[clamp(6vh,5vw,7rem)] font-medium p-3 md:p-3">
-          {children}
+          <AuroraText className="text-3xl">{children}</AuroraText>
         </h1>
         <p className="text-[clamp(2vh,1em,2em)] text-center dark:text-white mb-[7vh] text-gray-500 max-w-3xl p-2">
           Discover the perfect venue for your special day. We

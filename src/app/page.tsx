@@ -1,11 +1,6 @@
 import Image from "next/image";
 import myicon from "../../public/wedding.svg";
-import { Button } from "@/components/ui/button";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import { ArrowRightIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
-import { Marquee } from "@/components/magicui/marquee";
 import Testimonial from "@/components/ui/testimonialcard";
 import FeaturesSectionDemo from "@/components/ui/aminities";
 import CalendarButton from "@/components/Calender/cal-button";
@@ -55,9 +50,7 @@ export default function Home() {
       </section>
 
       {/* Testimonial */}
-      <Testimonial
-        children={<AuroraText className="text-3xl">Testimonials</AuroraText>}
-      />
+      <Testimonial>Testimonials</Testimonial>
     </div>
   );
 }
