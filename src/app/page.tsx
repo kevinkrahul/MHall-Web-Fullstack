@@ -8,6 +8,7 @@ import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { Marquee } from "@/components/magicui/marquee";
 import Testimonial from "@/components/ui/testimonialcard";
 import FeaturesSectionDemo from "@/components/ui/aminities";
+import CalendarButton from "@/components/Calender/cal-button";
 
 export default function Home() {
   return (
@@ -28,7 +29,8 @@ export default function Home() {
           unforgettable celebration.
         </p>
         <div className="z-10 flex m-4 items-center justify-center">
-          <div
+        <CalendarButton />
+          {/* <div
             className={cn(
               "group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
             )}
@@ -37,14 +39,19 @@ export default function Home() {
               <span>✨ Mark Us</span>
               <ArrowRightIcon className="ml-1 size-9 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
             </AnimatedShinyText>
-          </div>
+          </div> */}
         </div>
       </section>
             {/* Aminities */}
       <section className=" items-center w-full min-h-[calc(100vh-69px)]">
-        <FeaturesSectionDemo
-          children={<AuroraText className="text-3xl">Why Us?</AuroraText>}
-        />
+      <div>
+      <h1 className="text-[clamp(6vh,5vw,7rem)] text-center font-medium  pt-2 md:p-3 max-sm:mt-6">
+      <AuroraText className="text-3xl ">Why Us?</AuroraText>
+      </h1>
+    </div>
+        <div className=" relative z-0">
+          <FeaturesSectionDemo />
+        </div>
       </section>
 
       {/* Testimonial */}

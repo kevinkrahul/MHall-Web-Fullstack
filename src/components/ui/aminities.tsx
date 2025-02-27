@@ -10,7 +10,7 @@ import { LiaChairSolid } from "react-icons/lia";
 
 
 
-export default function FeaturesSectionDemo({children}:{children:React.ReactNode}) {
+export default function FeaturesSectionDemo() {
   const features = [
     {
       title: "Creative Powerhouse",
@@ -65,11 +65,6 @@ export default function FeaturesSectionDemo({children}:{children:React.ReactNode
   ];
   return (
     <>
-    <div>
-      <h1 className="text-[clamp(6vh,5vw,7rem)] text-center font-medium  pt-2 md:p-3 max-sm:mt-6">
-        {children}
-      </h1>
-    </div>
     <div className="grid grid-cols-1 col-span-full md:grid-cols-2 lg:grid-cols-3 relative z-10 py:10 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
