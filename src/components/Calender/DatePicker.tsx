@@ -1,5 +1,4 @@
 "use client";
-// @ts-expect-error: Type definitions missing for react-day-picker
 import { DayPicker } from "react-day-picker";
 import { Calendar } from "lucide-react";
 import "react-day-picker/dist/style.css";
