@@ -35,6 +35,7 @@ export const Navigation = ["Home", "About", "Gallery", "Guidlines", "Contact"];
 
 const Header = () => {
   const { resolvedTheme } = useGetTheme();
+  const [scrolled, setScrolled] = useState(false);
   const [logo, setLogo] = useState(Logo);
   useEffect(() => {
     if (resolvedTheme === "dark") {
@@ -44,8 +45,24 @@ const Header = () => {
     }
   }, [resolvedTheme]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 w-full z-50 bg-pink-50 dark:bg-neutral-900 p-4 flex justify-center items-center">
+    <header
+      className={`sticky top-0 w-full z-50 p-4 flex justify-center items-center ${
+        scrolled ? "bg-pink-50 dark:bg-neutral-900 " : "bg-background dark:bg-background"
+      }`}
+    >
       <a className="mr-2 md:hidden">
         <div className="">
           {SHEET_SIDES.map((side) => (
@@ -93,7 +110,13 @@ const Header = () => {
                 <div>
                   {Navigation.map((item, index) => (
                     <div key={index}>
-                      <Link href={ item.toLowerCase()==='home'?`/`:`/${item.toLowerCase()}`}>
+                      <Link
+                        href={
+                          item.toLowerCase() === "home"
+                            ? `/`
+                            : `/${item.toLowerCase()}`
+                        }
+                      >
                         <Button variant={"ghost"}>{item}</Button>
                       </Link>
                     </div>
@@ -112,7 +135,15 @@ const Header = () => {
         <NavigationMenuList className="gap-6">
           {Navigation.map((items, index) => (
             <NavigationMenuItem key={index}>
-              <Link href={ items.toLowerCase()==="home"?"/":`/${items.toLowerCase()}`} legacyBehavior passHref>
+              <Link
+                href={
+                  items.toLowerCase() === "home"
+                    ? "/"
+                    : `/${items.toLowerCase()}`
+                }
+                legacyBehavior
+                passHref
+              >
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   {items}
                 </NavigationMenuLink>
