@@ -17,8 +17,10 @@ export default function Home() {
         <h1 className="text-[clamp(6vh,5vw,7rem)] font-medium p-3 md:p-3">
           Your <AuroraText>Dream Wedding</AuroraText> Begins Here
         </h1>
-        <div>
-          <Image src={myicon} alt="wedding" width={500} height={500} />
+        <div className="relative inline-block" >
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-background"></div>
+        <Image src={myicon} alt="wedding" width={500} height={500} />
         </div>
         <p className="text-[clamp(2vh,1em,2em)] dark:text-white text-gray-500 max-w-3xl p-2">
           Discover the perfect venue for your special day. We provide a
