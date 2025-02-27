@@ -21,21 +21,21 @@ const reviews =[
     
     {
         id:3,
-      name:"babi",
+      name:"Mervin",
       img: "https://avatar.vercel.sh/jane",
-      username:"@rahul",
+      username:"@Mervin",
       body:"lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     },
     {
         id:4,
       name:"kumar",
       img: "https://avatar.vercel.sh/jane",
-      username:"@Kumardsa",
+      username:"@Kumara",
       body:"lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     },
     {
         id:5,
-      name:"bavin",
+      name:"Jhon",
       img: "https://avatar.vercel.sh/jane",
       username:"Kevinkrahul@gmail.com",
       body:"lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
@@ -76,7 +76,7 @@ const ReviewCard = ({
           // light styles
           "border-rose-900/[.1] bg-rose-300/[.05] hover:bg-gray-950/[.05]",
           // dark styles
-          "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+          "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-pink-300/[.2]",
         )}
       >
         <div className="flex flex-row items-center gap-2">

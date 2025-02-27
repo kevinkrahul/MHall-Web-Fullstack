@@ -100,10 +100,10 @@ const Feature = ({
       )}
     >
       {index < 6 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-pink-300/[.2] to-transparent pointer-events-none" />
       )}
       {index >= 3 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-pink-300/[.2] to-transparent pointer-events-none" />
       )}
       <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
         {icon}

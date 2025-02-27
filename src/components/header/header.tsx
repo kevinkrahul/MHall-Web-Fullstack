@@ -93,7 +93,7 @@ const Header = () => {
                 <div>
                   {Navigation.map((item, index) => (
                     <div key={index}>
-                      <Link href={`/${item.toLowerCase()}`}>
+                      <Link href={ item.toLowerCase()==='home'?`/`:`/${item.toLowerCase()}`}>
                         <Button variant={"ghost"}>{item}</Button>
                       </Link>
                     </div>
