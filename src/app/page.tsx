@@ -50,7 +50,11 @@ export default function Home() {
       </section>
 
       {/* Testimonial */}
-      <Testimonial>Testimonials</Testimonial>
+      <div className=" grid grid-cols-12 bg-transparent shadow-none ">
+        <div className="col-span-full md:col-start-2 md:col-end-12 shadow-none bg-transparent rounded-5xl">
+          <Testimonial>Testimonials</Testimonial>
+        </div>
+      </div>
     </div>
   );
 }
