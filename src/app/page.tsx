@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       {/* Landing page */}
-      <section className="flex flex-col justify-center text-center w-full min-h-[calc(100vh-69px)] items-center">
+      <section className="flex flex-col justify-center text-center w-full h-auto max-md:pb-[10vw] items-center">
         <h1 className="text-[clamp(6vh,5vw,7rem)] font-medium p-3 md:p-3">
           Your <AuroraText>Dream Wedding</AuroraText> Begins Here
         </h1>
@@ -38,7 +38,7 @@ export default function Home() {
         </div>
       </section>
             {/* Aminities */}
-      <section className=" items-center w-full min-h-[calc(100vh-69px)]">
+      <section className=" items-center w-full max-md:pb-[10vw]">
       <div>
       <h1 className="text-[clamp(6vh,5vw,7rem)] text-center font-medium  pt-2 md:p-3 max-sm:mt-6">
       <AuroraText className="text-3xl ">Why Us?</AuroraText>
