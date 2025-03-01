@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import {
   Sheet,
-  // SheetClose,
+  SheetClose,
   SheetContent,
   SheetDescription,
   // SheetFooter,
@@ -110,6 +110,7 @@ const Header = () => {
                 <div>
                   {Navigation.map((item, index) => (
                     <div key={index}>
+                      <SheetClose asChild>
                       <Link
                         href={
                           item.toLowerCase() === "home"
@@ -119,6 +120,7 @@ const Header = () => {
                       >
                         <Button variant={"ghost"}>{item}</Button>
                       </Link>
+                      </SheetClose>
                     </div>
                   ))}
                 </div>
