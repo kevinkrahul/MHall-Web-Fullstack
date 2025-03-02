@@ -19,12 +19,12 @@ const Aboutcomp = () => {
   return (
     <>
       <div>
-        <h1 className="text-[clamp(5vh,4vw,6rem)] font-medium p-3 md:p-3">
+        <h1 className="font-medium p-3 md:p-3" style={{ fontSize: "clamp(40px, 5vw, 60px)" }}>
           About Us
         </h1>
       </div>
       <div>
-        <h1 className="text-[clamp(3vh,2vw,4rem)] font-medium text-center p-3 md:p-3 max-sm:mt-6 min-h-[7rem] sm:h-auto">
+        <h1 className="font-medium text-center p-3 md:p-3 max-sm:mt-4 max-md:h-[6rem] sm:h-auto" style={{ fontSize: "clamp(35px, 3vw, 45px)" }}>
           We are your{" "}
           <span className="transition-all duration-500 ease-in-out">
             <AuroraText key={index}> {whowe[index]}</AuroraText>

@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       {/* Landing page */}
       <section className="flex flex-col justify-center text-center w-full h-auto max-md:pb-[10vw] items-center">
-        <h1 className="text-[clamp(6vh,5vw,7rem)] font-medium p-3 md:p-3">
+        <h1 className="font-medium p-3 md:p-3" style={{ fontSize: "clamp(40px, 5vw, 90px)" }}>
           Your <AuroraText>Dream Wedding</AuroraText> Begins Here
         </h1>
         <div className="relative inline-block" >
@@ -18,7 +18,8 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-background"></div>
         <Image src={myicon} alt="wedding" width={500} height={500} />
         </div>
-        <p className="text-[clamp(2vh,1em,2em)] dark:text-white text-gray-500 max-w-3xl p-2">
+        {/*  */}
+        <p className="dark:text-white text-gray-500 w-[70vw] max-w-7xl p-2" style={{ fontSize: "clamp(15px, 2vw, 25px)" }}>
           Discover the perfect venue for your special day. We provide a
           spacious, elegant marriage mahal designed to turn your wedding into an
           unforgettable celebration.
@@ -40,7 +41,7 @@ export default function Home() {
             {/* Aminities */}
       <section className=" items-center w-full max-md:pb-[10vw]">
       <div>
-      <h1 className="text-[clamp(6vh,5vw,7rem)] text-center font-medium  pt-2 md:p-3 max-sm:mt-6">
+      <h1 className="text-center font-medium  pt-2 md:p-3 max-sm:mt-6" style={{ fontSize: "clamp(35px, 3vw, 45px)" }}>
       <AuroraText className="text-3xl ">Why Us?</AuroraText>
       </h1>
     </div>
