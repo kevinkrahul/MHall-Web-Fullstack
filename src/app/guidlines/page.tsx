@@ -37,7 +37,7 @@ export default function Guidlines() {
       <div className="mb-6">
         <Image src={faq} alt="wedding" width={200} height={200} />
       </div>
-      <div className="" style={{ width: "clamp(280px, 80vw, 1900px)" }}>
+      <div className="md:mb-[10vw] xl:mb-[5vw]" style={{ width: "clamp(280px, 80vw, 1900px)" }}>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>How do we plan a wedding on a budget?</AccordionTrigger>
