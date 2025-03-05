@@ -183,6 +183,7 @@ export default {
 		}
   	}
   },
+//   box shadow plugin
   plugins: [
 	require("tailwindcss-animate"),
 	plugin(({ theme, addUtilities }) => {

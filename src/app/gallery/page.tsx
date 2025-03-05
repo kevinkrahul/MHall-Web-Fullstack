@@ -1,3 +1,4 @@
+import { AuroraText } from "@/components/magicui/aurora-text";
 import Galcard from "@/components/ui/galcard";
 import GalGrid from "@/components/ui/galgrid";
 
@@ -13,10 +14,10 @@ export default function Gallery() {
 
       <div>
         <h1
-          className="flex flex-col justify-center items-center font-semibold p-3 md:p-3"
+          className="flex flex-col justify-center items-center font-medium p-3 md:p-3"
           style={{ fontSize: "clamp(20px, 4vw, 30px)" }}
         >
-          Decorations
+          <AuroraText>Decorations</AuroraText>
         </h1>
         <div>
           <Galcard />
@@ -24,10 +25,10 @@ export default function Gallery() {
       </div>
       <div>
         <h1
-          className="flex flex-col justify-center items-center font-semibold p-3 md:p-3"
+          className="flex flex-col justify-center items-center font-medium p-3 md:p-3"
           style={{ fontSize: "clamp(20px, 4vw, 30px)" }}
         >
-          Events
+          <AuroraText>Events</AuroraText>
         </h1>
         <div>
           <GalGrid />
@@ -35,10 +36,10 @@ export default function Gallery() {
       </div>
       <div>
         <h1
-          className="flex flex-col justify-center items-center font-semibold p-3 md:p-3"
+          className="flex flex-col justify-center items-center font-medium p-3 md:p-3"
           style={{ fontSize: "clamp(20px, 4vw, 30px)" }}
         >
-          Aminities
+          <AuroraText>Aminities</AuroraText>
         </h1>
         <div>
           <Galcard reverse={true} />

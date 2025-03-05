@@ -77,7 +77,7 @@ export default function CalendarButton() {
       >
         <AnimatedShinyText
           onClick={() => setIsOpen(true)}
-          className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-900 hover:duration-300 hover:dark:text-pink-300 "
+          className="inline-flex neon-pink rounded-full items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-900 hover:duration-300 hover:dark:text-pink-300 "
         >
           <span>✨ Mark Us</span>
           <ArrowRightIcon className="ml-1 size-9 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
