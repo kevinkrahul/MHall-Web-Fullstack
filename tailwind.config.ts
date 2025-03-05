@@ -167,14 +167,19 @@ export default {
   				'50%': {
   					transform: 'translate(-50%, -50%) scale(0.9)'
   				}
-  			}
+  			},
+			  fadeIn: {
+				"0%": { opacity: "0" },
+				"100%": { opacity: "1" },
+			  }
   		},
   		animation: {
   			'shiny-text': 'shiny-text 8s infinite',
   			marquee: 'marquee var(--duration) infinite linear',
   			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-  			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite'
-  		}
+  			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite',
+			fadeIn: "fadeIn 1s ease-in-out forwards",
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
