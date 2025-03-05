@@ -13,7 +13,7 @@ export default function Gallery() {
 
       <div>
         <h1
-          className="flex flex-col justify-center items-center font-normal p-3 md:p-3"
+          className="flex flex-col justify-center items-center font-semibold p-3 md:p-3"
           style={{ fontSize: "clamp(20px, 4vw, 30px)" }}
         >
           Decorations
@@ -24,7 +24,7 @@ export default function Gallery() {
       </div>
       <div>
         <h1
-          className="flex flex-col justify-center items-center font-normal p-3 md:p-3"
+          className="flex flex-col justify-center items-center font-semibold p-3 md:p-3"
           style={{ fontSize: "clamp(20px, 4vw, 30px)" }}
         >
           Events
@@ -35,7 +35,7 @@ export default function Gallery() {
       </div>
       <div>
         <h1
-          className="flex flex-col justify-center items-center font-normal p-3 :md:p-3"
+          className="flex flex-col justify-center items-center font-semibold p-3 :md:p-3"
           style={{ fontSize: "clamp(20px, 4vw, 30px)" }}
         >
           Aminities
