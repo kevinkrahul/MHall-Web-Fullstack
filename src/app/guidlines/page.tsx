@@ -10,7 +10,7 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 
 export default function Guidlines() {
   return (
-    <section className="flex flex-col justify-center items-center w-full h-auto max-md:pb-[10vw]">
+    <section className="flex flex-col justify-center items-center w-full h-auto mb-10">
       <div>
         <h1
           className="font-medium text-center p-3 md:p-3"
@@ -37,7 +37,7 @@ export default function Guidlines() {
       <div className="mb-6">
         <Image src={faq} alt="wedding" width={200} height={200} />
       </div>
-      <div className="md:mb-[10vw] xl:mb-[5vw]" style={{ width: "clamp(280px, 80vw, 1900px)" }}>
+      <div className="xl:mb-[5vw]" style={{ width: "clamp(280px, 80vw, 1900px)" }}>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>How do we plan a wedding on a budget?</AccordionTrigger>

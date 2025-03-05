@@ -11,7 +11,7 @@ export default function Home() {
       {/* Landing page */}
       <section className="flex flex-col justify-center text-center w-full h-auto max-md:pb-[10vw] items-center">
         <h1 className="font-medium p-3 md:p-3" style={{ fontSize: "clamp(40px, 5vw, 90px)" }}>
-          Your <AuroraText>Dream Wedding</AuroraText> Begins Here
+          Your <AuroraText><span>Dream Wedding</span></AuroraText> Begins Here
         </h1>
         <div className="relative inline-block" >
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-background"></div>

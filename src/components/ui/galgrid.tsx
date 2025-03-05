@@ -43,7 +43,7 @@ const GalGrid = () => {
              <Image src={src} alt="" className="w-full h-full object-cover opacity-0 animate-fadeIn" />
            </motion.div>
 
-          ))};
+          ))}
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ const Congrid = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:mb-[10vw] mx-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-10">
         {/* Call */}
         <a href="tel:+918675111878">
             <Card>

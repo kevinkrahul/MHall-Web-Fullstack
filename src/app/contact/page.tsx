@@ -5,7 +5,7 @@ import { Ripple } from "@/components/magicui/ripple";
 
 export default function contact() {
   return (
-    <section className="flex flex-col justify-center items-center w-full h-auto max-md:pb-[10vw] overflow-hidden">
+    <section className="flex flex-col justify-center items-center w-full h-auto mb-10 overflow-hidden">
       <div className="relative w-full max-sm:h-[30vh] md:h-[40vw] lg:h-[30vw]">
         <Ripple 
         className="w-full h-full object-cover object-bottom" 

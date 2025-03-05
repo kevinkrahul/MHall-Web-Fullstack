@@ -4,18 +4,16 @@
 
 :root {
   --primary: #faf2f3;
-  --primary-hf:#faecee;
+  --primary-hf: #faecee;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #faf2f3;
-    --primary-hf:#faecee;
-    --border-rose:#BA68C8;
+    --primary-hf: #faecee;
+    --border-rose: #ba68c8;
   }
 }
-
-
 
 @layer base {
   :root {
@@ -44,10 +42,10 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --color-1: 0 100% 63%;
-    --color-2: 270 100% 63%;
-    --color-3: 210 100% 63%;
-    --color-4: 195 100% 63%;
+    --color-1: 330 86% 70%;   /* Vibrant Pink */
+    --color-2: 0 100% 60%;    /* Bright Red */
+    --color-3: 240 100% 60%;  /* Pure Blue */
+    --color-4: 330 86% 82%; 
     --color-5: 90 100% 63%;
   }
   .dark {
@@ -75,15 +73,13 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --color-1: 0 100% 63%;
-    --color-2: 270 100% 63%;
-    --color-3: 210 100% 63%;
-    --color-4: 195 100% 63%;
+    --color-1: 330 86% 70%;   /* Vibrant Pink */
+    --color-2: 0 100% 60%;    /* Bright Red */
+    --color-3: 240 100% 60%;  /* Pure Blue */
+    --color-4: 330 86% 82%;   /* Tailwind Pink-300 (#f9a8d4) */
     --color-5: 90 100% 63%;
   }
 }
-
-
 
 @layer base {
   * {

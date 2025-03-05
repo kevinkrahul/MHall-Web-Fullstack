@@ -98,7 +98,7 @@ const ReviewCard = ({
 const Testimonial=({children}:{children:ReactNode})=>{
 
     return(
-        <section className="flex flex-col  items-center w-full max-md:pb-[10vw] md:pb-[5rem]">
+        <section className="flex flex-col  items-center w-full pb-10">
         <h1 className="font-medium p-3 md:p-3" style={{ fontSize: "clamp(35px, 3vw, 45px)" }}>
           <AuroraText className="text-3xl">{children}</AuroraText>
         </h1>

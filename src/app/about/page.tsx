@@ -4,7 +4,7 @@ import Aboutcomp from "@/components/about/about-comp";
 
 export default function About() {
   return (
-    <section className="flex flex-col justify-center items-center w-full h-auto max-md:pb-[10vw]">
+    <section className="flex flex-col justify-center items-center w-full h-auto mb-10">
       <Aboutcomp />
       <div className="flex max-md:flex-col gap-6 justify-center my-10 w-full h-auto items-center p-[10px]">
         <div className="flex flex-col gap-4 px-[40px] py-5 rounded-3xl  border border-slate-300 dark:border-pink-300 hover:bg-pink-50 dark:hover:bg-neutral-900 w-full sm:w-[80%] md:w-[60%] xl:w-[40%]">
@@ -32,7 +32,7 @@ export default function About() {
           <Image src={demo} alt="wedding" width={400} height={400}></Image>
         </div>
       </div>
-      <div className="flex max-md:flex-col gap-6 mb-10 justify-center w-full h-auto items-center p-[10px]">
+      <div className="flex max-md:flex-col gap-6 justify-center w-full h-auto items-center p-[10px]">
         <div>
           <Image src={demo} alt="wedding" width={400} height={400}></Image>
         </div>
