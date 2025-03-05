@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 export default {
     darkMode: ["class"],
@@ -182,5 +183,23 @@ export default {
 		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+	require("tailwindcss-animate"),
+	plugin(({ theme, addUtilities }) => {
+		const neonUtilities: { [key: string]: any } = {};
+		const colors = theme('colors');
+
+		for (const color in colors) {
+			if (typeof colors[color] === 'object') {
+				const color1 = colors[color]['300'];
+				const color2 = colors[color]['400'];
+				neonUtilities[`.neon-${color}`] = {
+					boxShadow: `0 0 5px ${color1}, 0 0 20px ${color2}`
+				}
+			}
+		}
+
+		addUtilities(neonUtilities);
+	})
+],
 } satisfies Config;
