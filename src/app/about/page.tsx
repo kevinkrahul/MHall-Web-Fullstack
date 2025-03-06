@@ -1,6 +1,6 @@
 import Image from "next/image";
 import demo from "../../../public/wedding-planner-animate.svg";
-import Aboutcomp from "@/components/about/about-comp";
+import Aboutcomp from "@/components/magicui/word-rotate";
 
 export default function About() {
   return (
