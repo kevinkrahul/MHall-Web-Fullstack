@@ -80,7 +80,7 @@ const FaqItem = ({
       initial={{ opacity: 0, y: 50 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="xl:mb-[5vw]"
+      className="mb-1 md:mb-5"
       style={{ width: "clamp(280px, 80vw, 1900px)" }}
     >
       <Accordion type="single" collapsible className="w-full">
