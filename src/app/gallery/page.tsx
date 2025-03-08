@@ -1,6 +1,7 @@
 import { AuroraText } from "@/components/magicui/aurora-text";
 import Galcard from "@/components/ui/galcard";
 import GalGrid from "@/components/ui/galgrid";
+import DImage from "@/components/ui/displayImage";
 
 export default function Gallery() {
   return (
@@ -45,6 +46,7 @@ export default function Gallery() {
           <Galcard reverse={true} />
         </div>
       </div>
+        <DImage />
     </section>
   );
 }

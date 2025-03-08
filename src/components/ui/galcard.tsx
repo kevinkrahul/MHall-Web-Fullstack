@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {useImageStore} from "@/app/services/imageStore";
 
 import im1 from "../../../public/gal/1.jpeg";
 import im2 from "../../../public/gal/2.jpeg";
@@ -20,6 +21,10 @@ interface Props{
 }
 
 const Galcard = ({reverse=false}:Props) => {
+
+  const setSelectedImage = useImageStore((state)=>state.setSelectedImage); 
+  // const [selectedImage,setSelectedImage]=useState<StaticImageData | null>(null);
+
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden mb-10">
       <Marquee pauseOnHover reverse={reverse} className="[--duration:40s]">
@@ -27,6 +32,7 @@ const Galcard = ({reverse=false}:Props) => {
           <motion.figure key={index}
           whileHover={{ scale: 1.05}}
           transition={{ duration: 0.5 }}
+          onClick={()=>setSelectedImage(review)}
             className={cn(
               "relative h-[250px] w-[250px] sm:w-[300px] sm:h-[300px] cursor-pointer overflow-hidden rounded-xl border",
               // light styles
