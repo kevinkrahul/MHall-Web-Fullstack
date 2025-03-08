@@ -1,12 +1,7 @@
 import Image from "next/image";
 import faq from "../../../public/faq.svg";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../../components/ui/accordion";
 import { AuroraText } from "@/components/magicui/aurora-text";
+import Faq from "@/components/ui/Faq";
 
 export default function Guidlines() {
   return (
@@ -37,18 +32,7 @@ export default function Guidlines() {
       <div className="mb-6">
         <Image src={faq} alt="wedding" width={200} height={200} />
       </div>
-      <div className="xl:mb-[5vw]" style={{ width: "clamp(280px, 80vw, 1900px)" }}>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>How do we plan a wedding on a budget?</AccordionTrigger>
-            <AccordionContent>rioritize what matters most—venue, food, or decor—and cut costs on non-essentials. DIY and off-season weddings can save money.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>What if my partner and I have different wedding expectations?</AccordionTrigger>
-            <AccordionContent>Find a middle ground. Compromise on elements that matter most to each of you.</AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </div>
+      <Faq />
     </section>
   );
 }

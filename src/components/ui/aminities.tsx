@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { cn } from "@/lib/utils";
 import { CiBacon } from "react-icons/ci";
 import { LuCircleParking, LuVegan } from "react-icons/lu";
@@ -7,6 +7,7 @@ import { TbSpeakerphone } from "react-icons/tb";
 import { LiaChairSolid } from "react-icons/lia";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { ElementVisiblity } from "@/app/services/ElementVisiblity";
 
 export default function FeaturesSectionDemo() {
   const features = [
@@ -89,45 +90,28 @@ const Feature = ({
   icon: React.ReactNode;
   index: number;
 }) => {
-
-const [isVisible, setIsVisible] = useState(false);
-useEffect(()=>{
-  const handleScroll=()=>{
-    if(window.innerWidth){
-      const element=document.getElementById(`feature-${index}`);
-      if(element){
-        const rect= element.getBoundingClientRect();
-        if(rect.top<window.innerHeight*0.85){
-          setIsVisible(true);
-        }
-      }
-    }
-  }
-  window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-},[index]);
-
+  const isVisible = ElementVisiblity(`feature-${index}`);
 
   return (
     <>
       <motion.div
-      id={`feature-${index}`}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={cn(
-        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 3 || index === 6) && "lg:border-l dark:border-neutral-800",
-        index < 6 && "lg:border-b dark:border-neutral-800"
-      )}
-    >
-      {index < 6 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-pink-300/[.2] to-transparent pointer-events-none" />
-      )}
-      {index >= 3 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-pink-300/[.2] to-transparent pointer-events-none" />
-      )}
+        id={`feature-${index}`}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className={cn(
+          "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
+          (index === 0 || index === 3 || index === 6) &&
+            "lg:border-l dark:border-neutral-800",
+          index < 6 && "lg:border-b dark:border-neutral-800"
+        )}
+      >
+        {index < 6 && (
+          <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-pink-300/[.2] to-transparent pointer-events-none" />
+        )}
+        {index >= 3 && (
+          <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-pink-300/[.2] to-transparent pointer-events-none" />
+        )}
         <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
           {icon}
         </div>
