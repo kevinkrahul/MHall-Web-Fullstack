@@ -1,5 +1,3 @@
-import Mahal from "../../../public/Mahal.jpg";
-import Image from "next/image";
 import Congrid from "../../components/contact-grid/congrid";
 import { Ripple } from "@/components/magicui/ripple";
 
