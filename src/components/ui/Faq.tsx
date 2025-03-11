@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { ElementVisiblity } from "@/app/services/ElementVisiblity";
 import {
   Accordion,
@@ -7,57 +7,42 @@ import {
   AccordionTrigger,
 } from "../../components/ui/accordion";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+interface Question {
+  id: string;
+  text: string;
+  answers: string;
+}
 
 const Faq = () => {
-  const faqs = [
-    {
-      index: 1,
-      question: "How do we plan a wedding on a budget?",
-      answer:
-        "Prioritize what matters most—venue, food, or decor—and cut costs on non-essentials. DIY and off-season weddings can save money.",
-    },
-    {
-      index: 2,
-      question: "What if my partner and I have different wedding expectations?",
-      answer:
-        "Find a middle ground. Compromise on elements that matter most to each of you.",
-    },
-    {
-      index: 3,
-      question: "What if my partner and I have different wedding expectations?",
-      answer:
-        "Find a middle ground. Compromise on elements that matter most to each of you.",
-    },
-    {
-      index: 4,
-      question: "What if my partner and I have different wedding expectations?",
-      answer:
-        "Find a middle ground. Compromise on elements that matter most to each of you.",
-    },
-    {
-      index: 5,
-      question: "What if my partner and I have different wedding expectations?",
-      answer:
-        "Find a middle ground. Compromise on elements that matter most to each of you.",
-    },
-    {
-      index: 6,
-      question: "What if my partner and I have different wedding expectations?",
-      answer:
-        "Find a middle ground. Compromise on elements that matter most to each of you.",
-    },
-    {
-      index: 7,
-      question: "What if my partner and I have different wedding expectations?",
-      answer:
-        "Find a middle ground. Compromise on elements that matter most to each of you.",
-    },
-  ];
+  const [question, setQuestions] = useState<Question[]>([]);
+
+  useEffect(() => {
+    async function fetchQuestions() {
+      try {
+        const res = await fetch("/api/questions");
+        if (!res.ok) {
+          throw new Error("Failed to fetch questions");
+        }
+        const data: Question[] = await res.json();
+        setQuestions(data);
+      } catch (error) {
+        console.error("Error fetching questions:", error);
+      }
+    }
+    fetchQuestions();
+  }, []);
 
   return (
     <>
-      {faqs.map((qa, index) => (
-        <FaqItem key={qa.index} {...qa} index={index} />
+      {question.map((qa) => (
+        <FaqItem
+          key={qa.id}
+          question={qa.text}
+          answer={qa.answers}
+          index={Number(qa.id)}
+        />
       ))}
     </>
   );
@@ -79,7 +64,7 @@ const FaqItem = ({
       id={`faq-${index}`}
       initial={{ opacity: 0, y: 50 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: 5 * 0.1 }}
       className="mb-1 md:mb-5"
       style={{ width: "clamp(280px, 80vw, 1900px)" }}
     >
