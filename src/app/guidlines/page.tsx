@@ -1,7 +1,7 @@
 import Image from "next/image";
 import faq from "../../../public/faq.svg";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import Faq from "@/components/ui/Faq";
+// import Faq from "@/components/ui/Faq";
 
 export default function Guidlines() {
   return (
