@@ -32,7 +32,7 @@ export default function Guidlines() {
       <div className="mb-6">
         <Image src={faq} alt="wedding" width={200} height={200} />
       </div>
-      <Faq />
+      {/* <Faq /> */}
     </section>
   );
 }
