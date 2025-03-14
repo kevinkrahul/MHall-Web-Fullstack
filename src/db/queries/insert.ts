@@ -7,6 +7,8 @@ import {
   categories,
   NewCustomer,
   customers,
+  NewDatebook,
+  datebook,
 } from "../schema";
 import { SelectFaq } from "./select";
 
@@ -21,4 +23,8 @@ export async function CreateCategory(Data: NewCategory) {
 
 export async function CreateCustomer(Data: NewCustomer) {
   await db.insert(customers).values(Data).execute();
+}
+
+export async function CreateDateEvent(Data: NewDatebook) {
+  await db.insert(datebook).values(Data).execute();
 }
