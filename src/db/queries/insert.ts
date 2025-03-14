@@ -1,6 +1,6 @@
 "use server"
 import { db } from "../index";
-import { NewQuestion, faq } from "../schema";
+import { NewQuestion, faq,NewCategory, categories } from "../schema";
 import { SelectFaq } from "./select";
 
 export async function CreateFaq(data: NewQuestion) {
@@ -9,5 +9,11 @@ export async function CreateFaq(data: NewQuestion) {
     .values(data)
     .execute();
     return await SelectFaq();
+}
+
+export async function CreateCategory(Data:NewCategory){
+  await db.insert(categories)
+  .values(Data)
+  .execute();
 }
 

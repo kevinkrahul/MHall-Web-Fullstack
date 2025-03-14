@@ -24,7 +24,7 @@ type DynamicFormProps<T extends z.ZodType<any, any>> = {
   schema: T;
   defaultValues: z.infer<T>;
   fields: FormFieldType<z.infer<T>>[];
-  submitHandler: (values: z.infer<T>) => Promise<void>;
+  submitHandler: (values: z.infer<T>,reset:()=>void) => Promise<void>;
   loading?: boolean;
 };
 
@@ -42,7 +42,7 @@ export default function DynamicForm<T extends z.ZodType<any, any>>({
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(submitHandler)}
+        onSubmit={form.handleSubmit((values)=>submitHandler(values,form.reset))}
         className="space-y-4 flex flex-col items-start justify-center px-6 pb-5"
       >
         {fields.map((field) => (
