@@ -8,9 +8,7 @@ import {
   NewCustomer,
   customers,
   NewDatebook,
-  datebook,
-  NewImage,
-  images,
+  datebook
 } from "../schema";
 import { SelectCategory, SelectFaq } from "./select";
 
@@ -30,8 +28,4 @@ export async function CreateCustomer(Data: NewCustomer) {
 
 export async function CreateDateEvent(Data: NewDatebook) {
   await db.insert(datebook).values(Data).execute();
-}
-
-export async function CreateImage(Data:NewImage){
-  await db.insert(images).values(Data).execute();
 }

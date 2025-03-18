@@ -1,7 +1,7 @@
 "use client";
 
 import { z } from "zod";
-import { useForm,Path } from "react-hook-form";
+import { useForm, Path } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 
-type FormFieldType <T>= {
+type FormFieldType<T> = {
   name: Path<T>;
   label: string;
   placeholder?: string;
@@ -25,8 +25,9 @@ type DynamicFormProps<T extends z.ZodType<any, any>> = {
   schema: T;
   defaultValues: z.infer<T>;
   fields: FormFieldType<z.infer<T>>[];
-  submitHandler: (values: z.infer<T>,reset:()=>void) => Promise<void>;
+  submitHandler: (values: z.infer<T>, reset: () => void) => Promise<void>;
   loading?: boolean;
+  editing?: boolean;
 };
 
 export default function DynamicForm<T extends z.ZodType<any, any>>({
@@ -35,6 +36,7 @@ export default function DynamicForm<T extends z.ZodType<any, any>>({
   fields,
   submitHandler,
   loading = false,
+  editing = false,
 }: DynamicFormProps<T>) {
   const form = useForm<z.infer<T>>({
     resolver: zodResolver(schema),
@@ -43,7 +45,9 @@ export default function DynamicForm<T extends z.ZodType<any, any>>({
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit((values)=>submitHandler(values,form.reset))}
+        onSubmit={form.handleSubmit((values) =>
+          submitHandler(values, form.reset)
+        )}
         className="space-y-4 flex flex-col items-start justify-center px-6 pb-5"
       >
         {fields.map((field) => (
@@ -69,10 +73,9 @@ export default function DynamicForm<T extends z.ZodType<any, any>>({
         ))}
 
         <Button type="submit" variant="outline">
-          {loading ? "Submitting..." : "Submit"}
+          {editing ? "Update" : loading ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </Form>
-
   );
 }

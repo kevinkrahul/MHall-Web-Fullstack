@@ -1,156 +1,64 @@
 "use client";
-import { z } from "zod";
-import { useState, useEffect } from "react";
-import {
-  CreateCategory,
-  CreateFaq,
-  CreateDateEvent,
-} from "../../db/queries/insert";
+import { useState } from "react";
 import DynamicForm from "@/components/form/DynamicForm";
-import {
-  uploadImageAction,
-  fetchCategoriesAction,
-} from "@/app/admin/ImageAction/uploadImages";
 import { Button } from "@/components/ui/button";
-
-type Category = {
-  id: number;
-  name: string;
-};
-
-const faqSchema = z.object({
-  question: z
-    .string()
-    .min(5, { message: "Question must be at least 5 characters." }),
-  answer: z
-    .string()
-    .min(5, { message: "Answer must be at least 5 characters." }),
-});
-const dateSchema = z.object({
-  date: z.string(),
-  eventname: z
-    .string()
-    .min(5, { message: "Event must be at least 5 characters." }),
-  notes: z
-    .string()
-    .min(20, { message: "Notes must be at least 20 characters." }),
-});
-
-const categorySchema = z.object({
-  name: z
-    .string()
-    .min(2, { message: "Category must be at least 2 characters." }),
-});
+import Image from "next/image";
+import useCategories from "./Actions/useCategories";
+import useFaq from "./Actions/useFaq";
+import useCustomer from "./Actions/useCustomer";
+import useImage from "./Actions/useImage";
+import useDateEvent from "./Actions/useDateEvent";
+import { useEditing } from "./Actions/editingHook";
 
 export default function Admin() {
-  const [loading, setLoading] = useState(false);
-  const [categoryLoading, setCategoryLoading] = useState(false);
-  const [dateLoading, setDateLoading] = useState(false);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [catid, setCatid] = useState("");
-  const [imageLoading, setImageLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const {
+    categories,
+    categoryLoading,
+    handleCategorySubmit,
+    handleDeleteCategory,
+    categorySchema,
+  } = useCategories();
+  const { faqSchema, faqs, handleDeleteFaq, handleFaqSubmit, faqloading } =
+    useFaq();
+  const { customer, handleDeleteCustomer } = useCustomer();
+  const {
+    imageLoading,
+    image,
+    setFile,
+    handleDeleteImage,
+    setCatid,
+    message,
+    catid,
+    handleImageSubmit,
+  } = useImage();
+  const {
+    dateLoading,
+    dateSchema,
+    dateEvents,
+    handleDateSubmit,
+    handleDeleteDateEvent,
+  } = useDateEvent();
 
-  useEffect(() => {
-    async function fetchCategories() {
-      const data = await fetchCategoriesAction();
-      setCategories(
-        data.filter((category) => category.name !== null) as Category[]
-      );
-    }
-    fetchCategories();
-  }, []);
-
-  async function handleImageSubmit(event: React.FormEvent) {
-    event.preventDefault();
-    if (!file || !catid) {
-      setMessage("Please select a file and category.");
-      return;
-    }
-
-    setImageLoading(true);
-    setMessage("");
-
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("catid", catid);
-
-    const result = await uploadImageAction(formData);
-
-    if (result.success) {
-      setMessage("Image uploaded successfully!");
-      setFile(null);
-      setCatid("");
-    } else {
-      setMessage("Upload failed.");
-    }
-
-    setImageLoading(false);
-  }
-
-  async function handleFaqSubmit(
-    values: z.infer<typeof faqSchema>,
-    reset: () => void
-  ) {
-    setLoading(true);
-    try {
-      await CreateFaq({
-        questions: values.question,
-        answers: values.answer,
-      });
-      reset();
-    } catch (error) {
-      console.error("Error creating FAQ:", error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function handleCategorySubmit(
-    values: z.infer<typeof categorySchema>,
-    reset: () => void
-  ) {
-    setCategoryLoading(true);
-    try {
-      await CreateCategory({
-        name: values.name,
-      });
-      reset();
-    } catch (error) {
-      console.error("Error creating Category:", error);
-    } finally {
-      setCategoryLoading(false);
-    }
-  }
-
-  async function handleDateSubmit(
-    values: z.infer<typeof dateSchema>,
-    reset: () => void
-  ) {
-    setDateLoading(true);
-    try {
-      await CreateDateEvent({
-        date: new Date(values.date),
-        eventname: values.eventname,
-        notes: values.notes,
-      });
-      reset();
-    } catch (error) {
-      console.error("Error creating Date Event:", error);
-    } finally {
-      setDateLoading(false);
-    }
-  }
+  const { editingItem, setEditingItem, clearEditingItem } = useEditing();
 
   return (
     <>
       {/* FAQ */}
       <div>
-        <h1 className="text-xl font-bold mb-4">FAQ Form</h1>
+        <h1 className="text-xl font-bold mb-4">
+          {editingItem?.type === "faq" ? "Edit FAQ" : "Create FAQ"}
+        </h1>
         <DynamicForm
+          key={editingItem?.id || "new"}
           schema={faqSchema}
-          defaultValues={{ question: "", answer: "" }}
+          defaultValues={
+            editingItem?.type === "faq"
+              ? {
+                  question: editingItem.data.questions,
+                  answer: editingItem.data.answers,
+                }
+              : { question: "", answer: "" }
+          }
           fields={[
             {
               name: "question",
@@ -164,15 +72,50 @@ export default function Admin() {
             },
           ]}
           submitHandler={handleFaqSubmit}
-          loading={loading}
+          loading={faqloading}
+          editing={editingItem?.type === "faq"}
         />
+        <div>
+          {faqs.map((faq) => (
+            <div key={faq.id} className="flex justify-between p-2 border">
+              <span>
+                {faq.questions} - {faq.answers}
+              </span>
+              <Button
+                type="submit"
+                variant="outline"
+                onClick={() =>
+                  setEditingItem({ id: faq.id, type: "faq", data: faq })
+                }
+              >
+                Update
+              </Button>
+              <Button
+                type="submit"
+                variant="outline"
+                onClick={() => handleDeleteFaq(faq.id)}
+              >
+                Delete
+              </Button>
+            </div>
+          ))}
+        </div>
       </div>
       {/* Category */}
       <div>
-        <h1 className="text-xl font-bold mb-4">Category Form</h1>
+        <h1 className="text-xl font-bold mb-4">
+          {editingItem?.type === "category"
+            ? "Edit Category"
+            : "Create Category"}
+        </h1>
         <DynamicForm
+          key={editingItem?.id || "new"}
           schema={categorySchema}
-          defaultValues={{ name: "" }}
+          defaultValues={
+            editingItem?.type === "category"
+              ? { name: editingItem.data.name }
+              : { name: "" }
+          }
           fields={[
             {
               name: "name",
@@ -182,18 +125,61 @@ export default function Admin() {
           ]}
           submitHandler={handleCategorySubmit}
           loading={categoryLoading}
+          editing={editingItem?.type === "category"}
         />
+        {categories.map((category) => (
+          <div key={category.id} className="flex justify-between p-2 border">
+            <span>{category.name}</span>
+            <Button
+              type="submit"
+              variant="outline"
+              onClick={() =>
+                setEditingItem({
+                  id: category.id,
+                  type: "category",
+                  data: category,
+                })
+              }
+            >
+              Update
+            </Button>
+            <Button
+              type="submit"
+              variant="outline"
+              onClick={() => handleDeleteCategory(category.id)}
+            >
+              Delete
+            </Button>
+          </div>
+        ))}
       </div>
       {/* DAte */}
       <div>
-        <h1 className="text-xl font-bold mb-4">FAQ Form</h1>
+        <h1 className="text-xl font-bold mb-4">
+          {editingItem?.type === "dateEvent"
+            ? "Edit DateEvent"
+            : "Create DateEvent"}
+        </h1>
         <DynamicForm
+          key={editingItem?.id || "new"}
           schema={dateSchema}
-          defaultValues={{
-            date: new Date().toISOString(),
-            eventname: "",
-            notes: "",
-          }}
+          defaultValues={
+            editingItem?.type === "dateEvent"
+              ? {
+                  date: editingItem.data.date
+                    ? new Date(editingItem.data.date)
+                        .toISOString()
+                        .split("T")[0]
+                    : new Date().toISOString().split("T")[0],
+                  eventname: editingItem.data.eventname,
+                  notes: editingItem.data.notes,
+                }
+              : {
+                  date: new Date().toISOString(),
+                  eventname: "",
+                  notes: "",
+                }
+          }
           fields={[
             {
               name: "date",
@@ -214,7 +200,31 @@ export default function Admin() {
           ]}
           submitHandler={handleDateSubmit}
           loading={dateLoading}
+          editing={editingItem?.type === "dateEvent"}
         />
+        {dateEvents.map((event) => (
+          <div key={event.id} className="flex justify-between p-2 border">
+            <span>
+              {new Date(event.date).toLocaleDateString()} - {event.eventname}
+            </span>
+            <Button
+              type="submit"
+              variant={"outline"}
+              onClick={() =>
+                setEditingItem({ id: event.id, type: "dateEvent", data: event })
+              }
+            >
+              Update
+            </Button>
+            <Button
+              type="submit"
+              variant={"outline"}
+              onClick={() => handleDeleteDateEvent(event.id)}
+            >
+              Delete
+            </Button>
+          </div>
+        ))}
       </div>
       {/* Image */}
       <div>
@@ -260,6 +270,55 @@ export default function Admin() {
             {imageLoading ? "Submitting..." : "Submit"}
           </Button>
         </form>
+      </div>
+
+      {/* Customer Reply */}
+      <div>
+        <h1 className="text-xl font-bold mb-4">Delete Customer review</h1>
+        <div className="grid grid-cols-3 gap-4 p-3">
+          {customer.length > 0 ? (
+            customer.map((customer) => (
+              <div
+                key={customer.id}
+                className="flex flex-col gap-2 justify-between p-2 border"
+              >
+                <h3>{customer.name}</h3>
+                <span>{customer.email}</span>
+                <p>{customer.comments}</p>
+                <Button
+                  type="submit"
+                  variant="outline"
+                  onClick={() => handleDeleteCustomer(customer.id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            ))
+          ) : (
+            <h3>No customer review found!!</h3>
+          )}
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        {image
+          .filter((img) => img.catid === 5)
+          .map((img) => (
+            <div key={img.id} className="flex flex-col gap-2 p-2 border">
+              <Image
+                src={img.url.startsWith("http") ? img.url : `/${img.url}`}
+                width={300}
+                height={300}
+                alt="uploded"
+              />
+              <Button
+                type="submit"
+                variant={"outline"}
+                onClick={() => handleDeleteImage(img.id)}
+              >
+                Delete
+              </Button>
+            </div>
+          ))}
       </div>
     </>
   );
