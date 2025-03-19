@@ -14,10 +14,10 @@ const dateSchema = z.object({
   date: z.string(),
   eventname: z
     .string()
-    .min(5, { message: "Event must be at least 5 characters." }),
+    .min(5, { message: "Event must be at least 5 characters." }).max(50, { message: "Event must be at most 50 characters." }),
   notes: z
     .string()
-    .min(20, { message: "Notes must be at least 20 characters." }),
+    .min(20, { message: "Notes must be at least 20 characters." }).max(100,{message:"The summary of the event must be at most 100 characters"}),
 });
 
 export default function useDateEvent() {

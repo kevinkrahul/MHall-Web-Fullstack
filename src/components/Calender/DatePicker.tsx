@@ -2,6 +2,8 @@
 import { DayPicker } from "react-day-picker";
 import { Calendar } from "lucide-react";
 import "react-day-picker/dist/style.css";
+import useDateEvent from "@/app/admin/Actions/useDateEvent";
+import { useMemo, useState } from "react";
 
 // Sample booked dates
 const BOOKED_DATES = [
@@ -20,6 +22,13 @@ const today = new Date();
 // const isPastDate = (date: Date) => date < today;
 
 export function DatePicker() {
+  const { dateEvents } = useDateEvent();
+  const bookedDates = useMemo(
+    () => dateEvents.map((date) => new Date(date.date)),
+    [dateEvents]
+  );
+  const [selected, setSelected] = useState<Date>();
+
   return (
     <div className="relative mt-16 sm:mt-[calc(navbar-height+10px)] p-4 sm:p-3 md:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-sm sm:max-w-md mx-auto transition-colors overflow-hidden">
       {/* Title */}
@@ -36,15 +45,17 @@ export function DatePicker() {
 
       {/* Date Picker */}
       <div className="border dark:border-gray-700 rounded-lg p-2 sm:p-3 md:p-4 w-full">
-        <div className="overflow-auto max-h-[350px] h-400px sm:max-h-[350px]">
+        <div className="overflow-hidden max-h-[350px] h-400px sm:max-h-[350px]">
           <DayPicker
-            className="w-full md:flex flex-col items-center"
+            className="w-full flex justify-center tems-center min-h-[22em]"
             mode="single"
-            disabled={[...BOOKED_DATES, { before: today }]}
+            disabled={[{ before: today }]}
+            selected={selected}
+            onSelect={setSelected}
             modifiersClassNames={{
-              booked: "bg-red-100 text-red-500 rounded-full p-1 text-center",
+              booked: "border border-red-500 text-red-500 text-center",
             }}
-            modifiers={{ booked: BOOKED_DATES }}
+            modifiers={{ booked: bookedDates }}
           />
         </div>
       </div>
@@ -59,6 +70,19 @@ export function DatePicker() {
         </div>
       </div>
 
+      <div>
+        {dateEvents.map(
+          (date) =>
+            date.date.toLocaleDateString() ===
+              selected?.toLocaleDateString() && (
+              <div key={date.id} className="flex flex-col mx-2 gap-3 mt-3 bg-slate-200">
+                <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-1">{selected.toLocaleDateString()} - {date.eventname}</span>
+                <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Info - {date.notes}</span>
+              </div>
+            )
+        )}
+      </div>
+
       {/* Contact */}
       <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors text-xs sm:text-sm">
         <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-1">
@@ -68,7 +92,7 @@ export function DatePicker() {
           To make a booking, please contact us:
         </p>
         <ul className="mt-1 space-y-1">
-          <li>📞 (555) 123-4567</li>
+          <li>📞 91+ 98977xxxxx</li>
           <li>✉️ bookings@marriagehall.com</li>
           <li>⏰ 9:00 AM - 6:00 PM</li>
         </ul>
