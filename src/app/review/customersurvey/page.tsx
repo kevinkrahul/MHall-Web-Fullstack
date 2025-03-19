@@ -39,7 +39,7 @@ const customersurvey = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-4 items-center p-4">
       <h1 className="text-xl font-bold mb-4">Please enter your thoughts </h1>
       <DynamicForm
                 schema={customerSchema}
