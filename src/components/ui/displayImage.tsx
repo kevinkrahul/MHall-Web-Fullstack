@@ -5,8 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { useEffect } from "react";
 import { X } from "lucide-react";
 
-// ✅ Display Component
-const Display = ({ selectedImage }: { selectedImage: StaticImageData }) => {
+const Display = ({ selectedImage }: { selectedImage: string }) => {
   return (
     <div className="relative bg-white dark:bg-gray-800 rounded-lg w-full h-full max-w-3xl mx-auto transition-colors overflow-hidden">
       {selectedImage && (
