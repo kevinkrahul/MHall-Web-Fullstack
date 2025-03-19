@@ -1,9 +1,8 @@
 import {create} from "zustand";
-import { StaticImageData } from "next/image";
 
 interface ImageStore{
-    selectedImage: StaticImageData | null;
-    setSelectedImage: (image: StaticImageData | null) => void;
+    selectedImage: string | null;
+    setSelectedImage: (image: string | null) => void;
 }
 
 export const useImageStore = create<ImageStore>((set)=>({

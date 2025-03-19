@@ -51,7 +51,7 @@ export default function Admin() {
     <>
       {/* FAQ */}
       <div>
-        <div className="flex flex-col gap-4 bg-pink-50 items-center p-4"> 
+        <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
             {editingItem?.type === "faq" ? "Edit FAQ" : "Create FAQ"}
           </h1>
@@ -87,14 +87,13 @@ export default function Admin() {
         <div className="p-3">
           <h1 className="text-xl font-bold mb-4 flex justify-center">FAQ's</h1>
           {faqs.map((faq) => (
-            <div key={faq.id} className="flex flex-col gap-3 justify-between p-4 border">
+            <div
+              key={faq.id}
+              className="flex flex-col gap-3 justify-between p-4 border"
+            >
               <div className="flex flex-col gap-2 w-[80%]">
-                <span>
-                  {faq.questions}
-                </span>
-                <span>
-                -{faq.answers}
-                </span>
+                <span>{faq.questions}</span>
+                <span>-{faq.answers}</span>
               </div>
               <div className="flex gap-3">
                 <Button
@@ -121,9 +120,7 @@ export default function Admin() {
       {/* Category */}
       <div className="my-3">
         <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
-          <h1 className="text-xl font-bold mb-4">
-          Edit Category Name
-          </h1>
+          <h1 className="text-xl font-bold mb-4">Edit Category Name</h1>
           <DynamicForm
             key={editingItem?.id || "new"}
             schema={categorySchema}
@@ -147,7 +144,10 @@ export default function Admin() {
         {/* Display Category */}
         <div className="p-3">
           {categories.map((category) => (
-            <div key={category.id} className="flex flex-col justify-between p-4 gap-3 border">
+            <div
+              key={category.id}
+              className="flex flex-col justify-between p-4 gap-3 border"
+            >
               <span>{category.name}</span>
               <div>
                 <Button
@@ -176,7 +176,7 @@ export default function Admin() {
         </div>
       </div>
       {/* DAte */}
-      <div >
+      <div>
         <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
             {editingItem?.type === "dateEvent"
@@ -229,21 +229,27 @@ export default function Admin() {
         {/* Display DateEvent */}
         <div className="p-3">
           {dateEvents.map((event) => (
-            <div key={event.id} className="flex flex-col justify-between p-4 gap-3 border">
+            <div
+              key={event.id}
+              className="flex flex-col justify-between p-4 gap-3 border"
+            >
               <div className="flex flex-col gap-2 w-[80%]">
                 <span>
-                  {new Date(event.date).toLocaleDateString()} - {event.eventname}
+                  {new Date(event.date).toLocaleDateString()} -{" "}
+                  {event.eventname}
                 </span>
-                <span>
-                  {event.notes}
-                </span>
+                <span>{event.notes}</span>
               </div>
               <div className="flex gap-3">
                 <Button
                   type="submit"
                   variant={"outline"}
                   onClick={() =>
-                    setEditingItem({ id: event.id, type: "dateEvent", data: event })
+                    setEditingItem({
+                      id: event.id,
+                      type: "dateEvent",
+                      data: event,
+                    })
                   }
                 >
                   Update
@@ -260,7 +266,7 @@ export default function Admin() {
           ))}
         </div>
       </div>
-      
+
       {/* Customer Reply */}
       <div className="p-3 my-3">
         <div className="flex justify-center">
@@ -290,7 +296,6 @@ export default function Admin() {
           )}
         </div>
       </div>
-
 
       {/* Image */}
       <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
@@ -338,8 +343,6 @@ export default function Admin() {
         </form>
       </div>
 
-      
-
       {/* Image Display */}
       {/* <div className="flex flex-col gap-4"> */}
       <div className="flex flex-col justify-center items-center">
@@ -384,6 +387,9 @@ export default function Admin() {
               <CarouselNext />
               <CarouselPrevious />
             </Carousel>
+            <div className="block text-center mt-2">
+              Total Images: {image.filter((img) => img.catid === cat.id).length}
+            </div>
           </div>
         ))}
       </div>
