@@ -5,17 +5,6 @@ import "react-day-picker/dist/style.css";
 import useDateEvent from "@/app/admin/Actions/useDateEvent";
 import { useMemo, useState } from "react";
 
-// Sample booked dates
-const BOOKED_DATES = [
-  new Date(2025, 2, 20),
-  new Date(2025, 2, 5),
-  new Date(2025, 1, 28),
-  new Date(2025, 2, 22),
-  new Date(2025, 2, 1),
-  new Date(2025, 2, 10),
-  new Date(2025, 2, 15),
-  new Date(2025, 2, 28),
-];
 
 const today = new Date();
 
@@ -45,7 +34,7 @@ export function DatePicker() {
 
       {/* Date Picker */}
       <div className="border dark:border-gray-700 rounded-lg p-2 sm:p-3 md:p-4 w-full">
-        <div className="overflow-hidden max-h-[350px] h-400px sm:max-h-[350px]">
+        <div className="overflow-hidden max-h-[350px] h-400px sm:max-h-[350px] max-[425px]:overflow-scroll">
           <DayPicker
             className="w-full flex justify-center tems-center min-h-[22em]"
             mode="single"
