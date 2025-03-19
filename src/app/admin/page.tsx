@@ -21,7 +21,7 @@ export default function Admin() {
     categories,
     categoryLoading,
     handleCategorySubmit,
-    handleDeleteCategory,
+    // handleDeleteCategory,
     categorySchema,
   } = useCategories();
   const { faqSchema, faqs, handleDeleteFaq, handleFaqSubmit, faqloading } =
@@ -122,9 +122,7 @@ export default function Admin() {
       <div className="my-3">
         <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
-            {editingItem?.type === "category"
-              ? "Edit Category"
-              : "Create Category"}
+          Edit Category Name
           </h1>
           <DynamicForm
             key={editingItem?.id || "new"}
@@ -151,7 +149,7 @@ export default function Admin() {
           {categories.map((category) => (
             <div key={category.id} className="flex flex-col justify-between p-4 gap-3 border">
               <span>{category.name}</span>
-              <div className="flex gap-3">
+              <div>
                 <Button
                   type="submit"
                   variant="outline"
@@ -165,13 +163,13 @@ export default function Admin() {
                 >
                   Update
                 </Button>
-                <Button
+                {/* <Button
                   type="submit"
                   variant="outline"
                   onClick={() => handleDeleteCategory(category.id)}
                 >
                   Delete
-                </Button>
+                </Button> */}
               </div>
             </div>
           ))}

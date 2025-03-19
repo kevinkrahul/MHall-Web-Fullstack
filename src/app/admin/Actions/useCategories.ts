@@ -3,8 +3,8 @@ import { z } from "zod";
 import { useState, useEffect } from "react";
 import { SelectCategory } from "@/db/queries/select";
 import { UpdateCategory } from "@/db/queries/update";
-import { CreateCategory } from "@/db/queries/insert";
-import { DeleteCategory } from "@/db/queries/delete";
+// import { CreateCategory } from "@/db/queries/insert";
+// import { DeleteCategory } from "@/db/queries/delete";
 import { useEditing } from "./editingHook";
 
 type Category = {
@@ -41,11 +41,12 @@ export default function useCategories() {
     try {
       if (editingItem?.type === "category") {
         await UpdateCategory({ id: editingItem.id, name: values.name });
-      } else {
-        await CreateCategory({
-          name: values.name,
-        });
       }
+      // } else {
+      //   await CreateCategory({
+      //     name: values.name,
+      //   });
+      // }
       setEditingItem(null);
       const categories = await SelectCategory();
       setCategories(
@@ -59,19 +60,19 @@ export default function useCategories() {
     }
   }
 
-  async function handleDeleteCategory(id: number) {
-    await DeleteCategory({ id });
-    const data = await SelectCategory();
-    setCategories(
-      data.filter((category) => category.name !== null) as Category[]
-    );
-  }
+  // async function handleDeleteCategory(id: number) {
+  //   await DeleteCategory({ id });
+  //   const data = await SelectCategory();
+  //   setCategories(
+  //     data.filter((category) => category.name !== null) as Category[]
+  //   );
+  // }
 
   return {
     categories,
     categoryLoading,
     handleCategorySubmit,
-    handleDeleteCategory,
+    // handleDeleteCategory,
     categorySchema,
   };
 }
