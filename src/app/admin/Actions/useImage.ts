@@ -18,8 +18,13 @@ export default function useImage() {
   const [file, setFile] = useState<File | null>(null);
   const [catid, setCatid] = useState("");
   const [message, setMessage] = useState("");
+  const [loading,setLoading]=useState(false);
+  
 
   async function refreshImage() {
+    setLoading(true);
+
+  try{    
     const imageData = await fetchImages();
     setImage(
       imageData.map((img) => ({
@@ -29,6 +34,13 @@ export default function useImage() {
       }))
     );
   }
+  catch(e){
+    console.error(e);
+  }
+  finally{
+    setLoading(false);
+  }
+}
 
   useEffect(() => {
     refreshImage();
@@ -72,5 +84,6 @@ export default function useImage() {
     handleImageSubmit,
     setCatid,
     setFile,
+    loading
   };
 }
