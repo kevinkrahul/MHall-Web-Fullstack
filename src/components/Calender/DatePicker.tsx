@@ -1,10 +1,12 @@
 "use client";
 import { DayPicker } from "react-day-picker";
-import { Calendar } from "lucide-react";
+import { ArrowRightIcon, Calendar } from "lucide-react";
 import "react-day-picker/dist/style.css";
 import useDateEvent from "@/app/admin/Actions/useDateEvent";
 import { useMemo, useState } from "react";
-
+import { cn } from "@/lib/utils";
+import { AnimatedShinyText } from "../magicui/animated-shiny-text";
+import Link from "next/link";
 
 const today = new Date();
 
@@ -64,7 +66,7 @@ export function DatePicker() {
           (date) =>
             date.date.toLocaleDateString() ===
               selected?.toLocaleDateString() && (
-              <div key={date.id} className="flex flex-col mx-2 gap-3 mt-3 bg-slate-200">
+              <div key={date.id} className="flex flex-col mx-2 gap-3 mt-3">
                 <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-1">{selected.toLocaleDateString()} - {date.eventname}</span>
                 <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Info - {date.notes}</span>
               </div>
@@ -73,18 +75,18 @@ export function DatePicker() {
       </div>
 
       {/* Contact */}
-      <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors text-xs sm:text-sm">
-        <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-1">
-          Contact Information
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300">
-          To make a booking, please contact us:
-        </p>
-        <ul className="mt-1 space-y-1">
-          <li>📞 91+ 98977xxxxx</li>
-          <li>✉️ bookings@marriagehall.com</li>
-          <li>⏰ 9:00 AM - 6:00 PM</li>
-        </ul>
+      <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
+      <Link
+        href={"/contact"}
+        className={cn(
+          "group mb-[7vh] text-base text-white transition-all ease-in hover:cursor-pointer"
+        )}
+      >
+        <AnimatedShinyText className="inline-flex  neon-pink rounded-full items-center justify-center px-4  transition ease-out hover:text-neutral-900 hover:duration-300 hover:dark:text-pink-300 ">
+          Contact Us
+          <ArrowRightIcon className="ml-1 size-9 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+        </AnimatedShinyText>
+      </Link>
       </div>
     </div>
   );
