@@ -272,7 +272,7 @@ export default function Admin() {
         <div className="flex justify-center">
           <h1 className="text-xl font-bold mb-4">Delete Customer review</h1>
         </div>
-        <div className="grid grid-cols-3 gap-4 p-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-3">
           {customer.length > 0 ? (
             customer.map((customer) => (
               <div
