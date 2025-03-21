@@ -4,6 +4,9 @@ import { Marquee } from "@/components/magicui/marquee";
 import { ReactNode } from "react";
 import { AuroraText } from "../magicui/aurora-text";
 import useCustomer from "@/app/admin/Actions/useCustomer";
+import { ArrowRightIcon } from "lucide-react";
+import { AnimatedShinyText } from "../magicui/animated-shiny-text";
+import Link from "next/link";
 
 
 export function customerReview(){
@@ -67,9 +70,23 @@ const Testimonial=({children}:{children:ReactNode})=>{
         <h1 className="font-medium p-3 md:p-3" style={{ fontSize: "clamp(35px, 3vw, 45px)" }}>
           <AuroraText className="text-3xl">{children}</AuroraText>
         </h1>
-        <p className="text-center dark:text-white mb-[7vh] text-gray-500 max-w-3xl p-2" style={{ fontSize: "clamp(15px, 2vw, 25px)" }}>
-          Discover the perfect venue for your special day. We
+        <p className="text-center dark:text-white text-gray-500 max-w-3xl p-2 mb-5" style={{ fontSize: "clamp(15px, 2vw, 25px)" }}>
+          Discover the perfect venue for your special day
         </p>
+        <Link
+        href={"/review/customersurvey"}
+        className={cn(
+          "group rounded-full border mb-[7vh] border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+        )}
+      >
+        <AnimatedShinyText
+          className="inline-flex neon-pink rounded-full items-center justify-center px-4  transition ease-out hover:text-neutral-900 hover:duration-300 hover:dark:text-pink-300 "
+        >
+          <span>Review Here!!</span>
+          <ArrowRightIcon className="ml-1 size-9 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+        </AnimatedShinyText>
+      </Link>
+        
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:25s]">
             {firstRow.map((review) => (
