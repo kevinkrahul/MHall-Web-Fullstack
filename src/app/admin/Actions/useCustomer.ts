@@ -7,10 +7,18 @@ type Customer = { id: number; name: string; email: string; comments: string };
 
 export default function useCustomer() {
   const [customer, setCustomer] = useState<Customer[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     async function fetchCustomers() {
-      setCustomer(await SelectCustomer());
+      try {
+        setCustomer(await SelectCustomer());
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchCustomers();
   }, []);
@@ -23,5 +31,6 @@ export default function useCustomer() {
   return {
     customer,
     handleDeleteCustomer,
+    loading,
   };
 }
