@@ -40,94 +40,99 @@ const Footer = () => {
                   </li>
                 ))}
                 <li>
-                    <Link className="hover:underline hover:dark:text-pink-300" href={""}>Map</Link></li>
+                  <Link
+                    className="hover:underline hover:dark:text-pink-300"
+                    href={""}
+                  >
+                    Map
+                  </Link>
+                </li>
               </ul>
             </div>
-            
           </div>
         </div>
         <div>
           <span className="text-base mt-4 mb-2 text-gray-600 dark:text-gray-300 flex justify-center text-center p-1">
-          Near Arulmigu Kulanthai Velappar Thiru Kovil,Sakleshpur,Oddanchataram , Tamil Nadu-624619
+            Near Arulmigu Kulanthai Velappar Thiru
+            Kovil,Sakleshpur,Oddanchataram , Tamil Nadu-624619
           </span>
-        </div>
-        <hr className="mb-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2025{" "}
-            <a href="https://flowbite.com/" className="hover:underline">
-              Kv Mahal™
-            </a>
-            . All Rights Reserved.
-          </span>
-          <div className="flex mt-4 sm:justify-center sm:mt-0">
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-pink-300"
-            >
-              <svg
-                className="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 8 19"
+          <hr className="mb-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+              © 2025{" "}
+              <a href="https://flowbite.com/" className="hover:underline">
+                Kv Mahal™
+              </a>
+              . All Rights Reserved.
+            </span>
+            <div className="flex mt-4 sm:justify-center sm:mt-0">
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-pink-300"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="sr-only">Facebook page</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-pink-300 ms-5"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="3"
-                stroke="currentColor"
-                className="h-4 w-4"
+                <svg
+                  className="w-4 h-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 8 19"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="sr-only">Facebook page</span>
+              </a>
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-pink-300 ms-5"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="3"
+                  stroke="currentColor"
+                  className="h-4 w-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                  />
+                </svg>
 
-              <span className="sr-only">Map</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-pink-300 ms-5"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="3"
-                stroke="currentColor"
-                className="h-4 w-4"
+                <span className="sr-only">Map</span>
+              </a>
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-pink-300 ms-5"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
-                />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="3"
+                  stroke="currentColor"
+                  className="h-4 w-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
+                  />
+                </svg>
 
-              <span className="sr-only">Whatsapp Message</span>
-            </a>
-            {/* <a
+                <span className="sr-only">Whatsapp Message</span>
+              </a>
+              {/* <a
               href="#"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-pink-300 ms-5"
             >
@@ -165,6 +170,7 @@ const Footer = () => {
               </svg>
               <span className="sr-only">Dribbble account</span>
             </a> */}
+            </div>
           </div>
         </div>
       </div>
