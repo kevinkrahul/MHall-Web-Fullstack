@@ -24,6 +24,10 @@ const Galcard = ({ reverse = false }: Props) => {
           <Skeleton className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-xl bg-pink-100 dark:bg-neutral-700" />
           <Skeleton className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-xl bg-pink-100 dark:bg-neutral-700" />
           <Skeleton className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-xl bg-pink-100 dark:bg-neutral-700" />
+          <Skeleton className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-xl bg-pink-100 dark:bg-neutral-700" />
+          <Skeleton className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-xl bg-pink-100 dark:bg-neutral-700" />
+          <Skeleton className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-xl bg-pink-100 dark:bg-neutral-700" />
+
         </div>
       ) : (
       <Marquee pauseOnHover reverse={reverse} className="[--duration:40s]">

@@ -5,7 +5,6 @@ import { LuCircleParking, LuVegan } from "react-icons/lu";
 import { MdTempleHindu } from "react-icons/md";
 import { TbSpeakerphone } from "react-icons/tb";
 import { LiaChairSolid } from "react-icons/lia";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ElementVisiblity } from "@/app/services/ElementVisiblity";
 
