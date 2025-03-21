@@ -51,7 +51,7 @@ export default function Admin() {
     <>
       {/* FAQ */}
       <div>
-        <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
+        <div className="flex flex-col gap-4 bg-pink-50 dark:bg-neutral-900 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
             {editingItem?.type === "faq" ? "Edit FAQ" : "Create FAQ"}
           </h1>
@@ -119,7 +119,7 @@ export default function Admin() {
       </div>
       {/* Category */}
       <div className="my-3">
-        <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
+        <div className="flex flex-col gap-4 bg-pink-50 dark:bg-neutral-900 items-center p-4">
           <h1 className="text-xl font-bold mb-4">Edit Category Name</h1>
           <DynamicForm
             key={editingItem?.id || "new"}
@@ -177,7 +177,7 @@ export default function Admin() {
       </div>
       {/* DAte */}
       <div>
-        <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
+        <div className="flex flex-col gap-4 bg-pink-50 dark:bg-neutral-900 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
             {editingItem?.type === "dateEvent"
               ? "Edit DateEvent"
@@ -298,7 +298,7 @@ export default function Admin() {
       </div>
 
       {/* Image */}
-      <div className="flex flex-col gap-4 bg-pink-50 items-center p-4">
+      <div className="flex flex-col gap-4 bg-pink-50 dark:bg-neutral-900 items-center p-4">
         <h1 className="text-xl font-bold mb-4">Upload Image</h1>
         {message && <p className="text-pink-500">{message}</p>}
         <form
