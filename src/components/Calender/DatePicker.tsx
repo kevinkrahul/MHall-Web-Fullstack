@@ -75,7 +75,7 @@ export function DatePicker() {
       </div>
 
       {/* Contact */}
-      <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
+      <div className="mt-4 p-3 ">
       <Link
         href={"/contact"}
         className={cn(
