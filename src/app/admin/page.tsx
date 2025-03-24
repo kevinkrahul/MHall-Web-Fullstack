@@ -21,7 +21,7 @@ import type { User } from "@supabase/auth-helpers-nextjs";
 import { logout } from "../login/actions";
 import access from "../../../public/Access.svg";
 
-export function Admin() {
+export function DataForm() {
 
   const {
     categories,
@@ -422,7 +422,7 @@ export function Admin() {
   );
 }
 
-export default function PrivatePage() {
+export default function Admin() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -454,5 +454,5 @@ export default function PrivatePage() {
     );
   }
 
-  return <Admin />;
+  return <DataForm />;
 }
