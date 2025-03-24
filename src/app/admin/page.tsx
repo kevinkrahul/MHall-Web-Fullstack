@@ -15,13 +15,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { createClient } from '@/lib/client'
+import { createClient } from "@/lib/client";
 import { useEffect, useState } from "react";
-import type { User } from '@supabase/auth-helpers-nextjs';
+import type { User } from "@supabase/auth-helpers-nextjs";
 import { logout } from "../login/actions";
-
+import access from "../../../public/Access.svg";
 
 export function Admin() {
+
   const {
     categories,
     categoryLoading,
@@ -50,21 +51,30 @@ export function Admin() {
     handleDeleteDateEvent,
   } = useDateEvent();
 
-  const { editingItem, setEditingItem, clearEditingItem } = useEditing();
+  const { editingItem, setEditingItem } = useEditing();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  async function handleLogout(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoggingOut(true); // Set loading state
+    await logout(); // Perform logout
+    setIsLoggingOut(false); // Reset loading state (not always needed, as redirect likely happens)
+  }
+
+
+
 
   return (
     <>
       {/* FAQ */}
       <div>
-        <form action={logout}>
-          <Button
-            type="submit"
-            variant="outline"
-            onClick={() => logout()}
-          >
-            Logout
-          </Button>
-        </form>
+        <div className="flex justify-center items-center p-4">
+          <form onSubmit={handleLogout}>
+            <Button type="submit" variant="outline" className="hover:bg-red-400 dark:hover:bg-red-400 dark:bg-neutral-500" onClick={() => logout()}>
+              {isLoggingOut?"Logging Out...":"Logout"}
+            </Button>
+          </form>
+        </div>
         <div className="flex flex-col gap-4 bg-pink-50 dark:bg-neutral-900 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
             {editingItem?.type === "faq" ? "Edit FAQ" : "Create FAQ"}
@@ -412,31 +422,37 @@ export function Admin() {
   );
 }
 
-
-
 export default function PrivatePage() {
-
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(()=>{
-
-    async function getUser(){
-
-    const supabase = createClient()
-    const { data, error } = await supabase.auth.getUser()
-    if (error || !data?.user) {
-      console.log('No user found')
+  useEffect(() => {
+    async function getUser() {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data?.user) {
+        console.log("No user found");
+      } else {
+        setUser(data.user);
+      }
     }
-    else{
-      setUser(data.user)
-    }
-  }
-  getUser()
-  },[])
+    getUser();
+  }, []);
 
-  if(!user){
-    return <p>Login First...</p>
+  if (!user) {
+    return (
+      <>
+        <section className="flex flex-col justify-center text-center w-full h-auto max-md:pb-[10vw] items-center">
+          <Image src={access} alt="wedding" width={500} height={500} />
+          <h1
+            className="font-medium p-3 md:p-3"
+            style={{ fontSize: "clamp(20px, 4vw, 60px)" }}
+          >
+            Admin access required...!
+          </h1>
+        </section>
+      </>
+    );
   }
 
-  return <Admin />
+  return <Admin />;
 }
