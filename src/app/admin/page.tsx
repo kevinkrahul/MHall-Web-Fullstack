@@ -15,8 +15,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { createClient } from '@/lib/client'
+import { useEffect, useState } from "react";
+import type { User } from '@supabase/auth-helpers-nextjs';
+import { logout } from "../login/actions";
 
-export default function Admin() {
+
+export function Admin() {
   const {
     categories,
     categoryLoading,
@@ -51,6 +56,15 @@ export default function Admin() {
     <>
       {/* FAQ */}
       <div>
+        <form action={logout}>
+          <Button
+            type="submit"
+            variant="outline"
+            onClick={() => logout()}
+          >
+            Logout
+          </Button>
+        </form>
         <div className="flex flex-col gap-4 bg-pink-50 dark:bg-neutral-900 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
             {editingItem?.type === "faq" ? "Edit FAQ" : "Create FAQ"}
@@ -396,4 +410,33 @@ export default function Admin() {
       {/* </div> */}
     </>
   );
+}
+
+
+
+export default function PrivatePage() {
+
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(()=>{
+
+    async function getUser(){
+
+    const supabase = createClient()
+    const { data, error } = await supabase.auth.getUser()
+    if (error || !data?.user) {
+      console.log('No user found')
+    }
+    else{
+      setUser(data.user)
+    }
+  }
+  getUser()
+  },[])
+
+  if(!user){
+    return <p>Login First...</p>
+  }
+
+  return <Admin />
 }
