@@ -51,8 +51,10 @@ const FaqItem = ({
         <AccordionItem value={`item-${index}`}>
           <AccordionTrigger>{question}</AccordionTrigger>
           <AccordionContent>
-            <AnimatedShinyText shimmerWidth={300}>{answer}</AnimatedShinyText>
-          </AccordionContent>
+            {answer.length > 200 ?
+            <AnimatedShinyText shimmerWidth={5000}>{answer}</AnimatedShinyText>
+          :  <AnimatedShinyText shimmerWidth={300}>{answer}</AnimatedShinyText>
+          }</AccordionContent>
         </AccordionItem>
       </Accordion>
     </motion.div>

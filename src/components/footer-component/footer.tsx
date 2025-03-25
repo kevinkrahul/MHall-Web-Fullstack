@@ -4,6 +4,7 @@ import Image from "next/image";
 import Logo from "../../../public/logo.png";
 import Link from "next/link";
 import { Navigation } from "../header/header";
+import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 
 const Footer = () => {
   return (
@@ -53,8 +54,10 @@ const Footer = () => {
         </div>
         <div>
           <span className="text-base mt-4 mb-2 text-gray-600 dark:text-gray-300 flex justify-center text-center p-1">
-            Near Arulmigu Kulanthai Velappar Thiru
-            Kovil,Sakleshpur,Oddanchataram , Tamil Nadu-624619
+            <AnimatedShinyText shimmerWidth={500}>
+              Near Arulmigu Kulanthai Velappar Thiru
+              Kovil,Sakleshpur,Oddanchataram , Tamil Nadu-624619
+            </AnimatedShinyText>
           </span>
           <hr className="mb-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">

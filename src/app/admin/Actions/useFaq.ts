@@ -12,17 +12,18 @@ type Faq = { id: number; questions: string; answers: string };
 const faqSchema = z.object({
   question: z
     .string()
-    .min(5, { message: "Question must be at least 5 characters." }),
+    .min(30, { message: "Question must be at least 30 characters." })
+    .max(200, { message: "Question must be at most 200 characters." }),
   answer: z
     .string()
-    .min(5, { message: "Answer must be at least 5 characters." }),
+    .min(40, { message: "Answer must be at least 40 characters." })
+    .max(650, { message: "Answer must be at most 700 characters." }),
 });
 
 export default function useFaq() {
   const [faqloading, setFaqLoading] = useState(false);
   const [faqs, setFaqs] = useState<Faq[]>([]);
-  const { editingItem, setEditingItem} = useEditing();
-
+  const { editingItem, setEditingItem } = useEditing();
 
   useEffect(() => {
     async function fetchCategories() {
