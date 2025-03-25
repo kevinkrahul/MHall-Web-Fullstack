@@ -8,13 +8,14 @@ import {
 } from "../../components/ui/accordion";
 import { motion } from "framer-motion";
 import useFaq from "@/app/admin/Actions/useFaq";
+import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 
 const Faq = () => {
   const { faqs } = useFaq();
 
   return (
     <>
-      {faqs.map((qa,index) => (
+      {faqs.map((qa, index) => (
         <FaqItem
           key={qa.id}
           question={qa.questions}
@@ -49,7 +50,9 @@ const FaqItem = ({
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value={`item-${index}`}>
           <AccordionTrigger>{question}</AccordionTrigger>
-          <AccordionContent>{answer}-{index}</AccordionContent>
+          <AccordionContent>
+            <AnimatedShinyText shimmerWidth={300}>{answer}</AnimatedShinyText>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </motion.div>

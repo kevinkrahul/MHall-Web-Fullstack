@@ -5,6 +5,7 @@ import { createClient } from "@/lib/client";
 import { useState, useEffect } from "react";
 import CrudForm from "@/components/admin-component/crudform";
 import Image from "next/image";
+import { AuroraText } from "@/components/magicui/aurora-text";
 
 export default function Admin() {
   const [user, setUser] = useState<User | null>(null);
@@ -31,7 +32,7 @@ export default function Admin() {
             className="font-medium p-3 md:p-3"
             style={{ fontSize: "clamp(20px, 4vw, 60px)" }}
           >
-            Admin access required...!
+            <AuroraText>Admin access required...!</AuroraText>
           </h1>
         </section>
       </>
