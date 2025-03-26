@@ -59,6 +59,7 @@ import { resetPassword } from "@/app/login/actions";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [success,setSuccess] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -71,7 +72,7 @@ export default function LoginForm() {
     if (response.error) {
       setMessage(response.error);
     } else {
-      setMessage(response.success || "");
+      setSuccess(response.success || "");
     }
   }
 
@@ -80,6 +81,7 @@ export default function LoginForm() {
   async function handleSubmitPassword(e: React.FormEvent) {
     e.preventDefault();
     setMessage("");
+    setSuccess("");
 
     const formData = new FormData();
     formData.append("newPassword", newPassword);
@@ -158,6 +160,7 @@ export default function LoginForm() {
                 </div>
                 <div className="mt-4 text-center text-sm">
                   {message && <p className="text-red-500">{message}</p>}
+                  {success && <p className="text-green-500">{success}</p>}
                 </div>
               </form>
             </CardContent>
