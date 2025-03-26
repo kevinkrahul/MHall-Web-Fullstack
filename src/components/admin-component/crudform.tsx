@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import DynamicForm from "@/components/form/DynamicForm";
 import { Button } from "@/components/ui/button";
@@ -16,11 +16,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { logout } from "@/app/login/actions";
 
 export default function CrudForm() {
-
   const {
     categories,
     categoryLoading,
@@ -35,6 +35,7 @@ export default function CrudForm() {
     imageLoading,
     image,
     setFile,
+    file,
     handleDeleteImage,
     setCatid,
     message,
@@ -59,17 +60,19 @@ export default function CrudForm() {
     setIsLoggingOut(false); // Reset loading state (not always needed, as redirect likely happens)
   }
 
-
-
-
   return (
     <>
       {/* FAQ */}
       <div>
         <div className="flex justify-center items-center p-4">
           <form onSubmit={handleLogout}>
-            <Button type="submit" variant="outline" className="hover:bg-red-400 dark:hover:bg-red-400 dark:bg-neutral-500" onClick={() => logout()}>
-              {isLoggingOut?"Logging Out...":"Logout"}
+            <Button
+              type="submit"
+              variant="outline"
+              className="hover:bg-red-400 dark:hover:bg-red-400 dark:bg-neutral-500"
+              onClick={() => logout()}
+            >
+              {isLoggingOut ? "Logging Out..." : "Logout"}
             </Button>
           </form>
         </div>
@@ -197,7 +200,7 @@ export default function CrudForm() {
           ))}
         </div>
       </div>
-      {/* DAte */}
+      {/* Date */}
       <div>
         <div className="flex flex-col gap-4 bg-pink-50 dark:bg-neutral-900 items-center p-4">
           <h1 className="text-xl font-bold mb-4">
@@ -330,15 +333,55 @@ export default function CrudForm() {
           {/* File Input */}
           <div className="flex flex-col gap-3">
             <label className="block text-sm font-medium">Choose a Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                const selectedFile = e.target.files?.[0] || null;
-                setFile(selectedFile);
-              }}
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-            />
+            <div className="relative border-2 group border-dashed rounded-lg px-8 border-gray-400 bg-white dark:bg-black dark:hover:bg-gray-200 hover:bg-gray-300 flex flex-col items-center transition justify-center w-full h-10 cursor-pointer">
+              <Input
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={(e) => {
+                  const selectedFile = Array.from(e.target.files || []);
+                  setFile(selectedFile);
+                }}
+                className="absolute w-full h-full inset-0 opacity-0 cursor-pointer"
+              />
+              <span className="text-sm text-gray-500 dark:text-white group-hover:text-gray-950 ">
+                {file.length > 0 ? (
+                  <span className="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    Selected
+                  </span>
+                ) : (
+                  "Click to upload image"
+                )}
+              </span>
+            </div>
+            <div className=" flex w-[95%] md:w-[80%] flex-col gap-2">
+              {file.length > 0 && (
+                <>
+                  <label className="block text-sm font-medium">
+                    Selected Files : {file.length}
+                  </label>
+                  <span>
+                    {file.map((f, index) => (
+                      <span key={index} className="text-green-700">
+                        {f.name} /{" "}
+                      </span>
+                    ))}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Category Dropdown */}
@@ -347,7 +390,7 @@ export default function CrudForm() {
             <select
               value={catid}
               onChange={(e) => setCatid(e.target.value)}
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2  md:text-sm"
             >
               <option value="">Choose a category</option>
               {categories.map((category) => (

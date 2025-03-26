@@ -15,7 +15,7 @@ type image = {
 export default function useImage() {
   const [imageLoading, setImageLoading] = useState(false);
   const [image, setImage] = useState<image[]>([]);
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File[]>([]);
   const [catid, setCatid] = useState("");
   const [message, setMessage] = useState("");
   const [loading,setLoading]=useState(false);
@@ -55,16 +55,26 @@ export default function useImage() {
 
     setImageLoading(true);
     setMessage("");
-    const result = await uploadImageAction(file, Number(catid));
+    const results = await Promise.all(
+      file.map((f) => uploadImageAction(f, Number(catid)))
+    );
 
-    if (result.success) {
-      setMessage("Image uploaded successfully!");
+    const success = results.every((result) => result.success);
+    if (success) {
+      setMessage("All images uploaded successfully!");
       await refreshImage();
-      setFile(null);
+      setFile([]);
       setCatid("");
     } else {
-      setMessage("Upload failed.");
+      setMessage("Some uploads failed.");
     }
+
+    // if (result.success) {
+    //   setMessage("Image uploaded successfully!");
+      
+    // } else {
+    //   setMessage("Upload failed.");
+    // }
 
     setImageLoading(false);
   }
