@@ -132,7 +132,7 @@ const Header = () => {
       </a>
 
       <Link href="/" className="w-full justify-start items-center">
-        <Image src={logo} alt={"Kv logo"} className="w-[50] h-[40] lg:w-[100]"/>
+          <Image src={logo} alt={"Kv logo"} width={70} height={50} />
       </Link>
       <NavigationMenu className="hidden md:block">
         <NavigationMenuList className="gap-6">

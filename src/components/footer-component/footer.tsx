@@ -33,11 +33,8 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-3 md:mb-0">
             <Link href={"/"} className="flex items-center justify-start">
-              <Image
-                src={logo}
-                alt={"Kv logo"}
-                className="w-[50] h-[40] lg:w-[100]"
-              />
+              <Image src={logo} alt={"Kv logo"} width={70} height={50} />
+
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Kv Mahal
               </span>
