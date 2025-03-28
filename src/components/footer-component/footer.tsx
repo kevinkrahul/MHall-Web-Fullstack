@@ -5,15 +5,39 @@ import Logo from "../../../public/logo.png";
 import Link from "next/link";
 import { Navigation } from "../header/header";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import whitelogo from "../../../public/logo white.svg";
+import Darklogo from "../../../public/logo black.svg";
+
+const useGetTheme = () => {
+  const resolvedTheme = useTheme();
+  return resolvedTheme;
+};
 
 const Footer = () => {
+  const { resolvedTheme } = useGetTheme();
+  const [logo, setLogo] = useState(Logo);
+
+  useEffect(() => {
+    if (resolvedTheme === "dark") {
+      setLogo(whitelogo);
+    } else {
+      setLogo(Darklogo);
+    }
+  }, [resolvedTheme]);
+
   return (
     <footer className="bg-pink-50 dark:bg-neutral-900 md:mt-0">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-3 md:mb-0">
             <Link href={"/"} className="flex items-center justify-start">
-              <Image src={Logo} width={75} height={75} alt="Logo" />
+              <Image
+                src={logo}
+                alt={"Kv logo"}
+                className="w-[50] h-[40] lg:w-[100]"
+              />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Kv Mahal
               </span>

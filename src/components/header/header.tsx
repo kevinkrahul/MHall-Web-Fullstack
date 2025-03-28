@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Logo from "../../../public/logo.png";
+import darkLogo from "../../../public/logo black.svg";
+import whitelogo from "../../../public/logo white.svg";
 import Link from "next/link";
 import { ModeToggle } from "@/components/toggle-theme/theme-switch";
 import { Button } from "../ui/button";
@@ -36,12 +37,12 @@ export const Navigation = ["Home", "About", "Gallery", "Guidlines", "Contact"];
 const Header = () => {
   const { resolvedTheme } = useGetTheme();
   const [scrolled, setScrolled] = useState(false);
-  const [logo, setLogo] = useState(Logo);
+  const [logo, setLogo] = useState(whitelogo);
   useEffect(() => {
     if (resolvedTheme === "dark") {
-      setLogo(Logo);
+      setLogo(whitelogo);
     } else {
-      setLogo(Logo);
+      setLogo(darkLogo);
     }
   }, [resolvedTheme]);
 
@@ -131,7 +132,7 @@ const Header = () => {
       </a>
 
       <Link href="/" className="w-full justify-start items-center">
-        <Image src={logo} alt={"Kv logo"} width={35} height={35} />
+        <Image src={logo} alt={"Kv logo"} className="w-[50] h-[40] lg:w-[100]"/>
       </Link>
       <NavigationMenu className="hidden md:block">
         <NavigationMenuList className="gap-6">
