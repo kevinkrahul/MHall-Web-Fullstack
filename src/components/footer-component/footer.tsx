@@ -7,8 +7,8 @@ import { Navigation } from "../header/header";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import whitelogo from "../../../public/logo white.svg";
-import Darklogo from "../../../public/logo black.svg";
+import whitelogo from "../../../public/blacklogo.svg";
+import Darklogo from "../../../public/whitelogo.svg";
 
 const useGetTheme = () => {
   const resolvedTheme = useTheme();

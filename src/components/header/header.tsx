@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import darkLogo from "../../../public/logo black.svg";
-import whitelogo from "../../../public/logo white.svg";
+import darkLogo from "../../../public/whitelogo.svg";
+import whitelogo from "../../../public/blacklogo.svg";
 import Link from "next/link";
 import { ModeToggle } from "@/components/toggle-theme/theme-switch";
 import { Button } from "../ui/button";
