@@ -64,7 +64,7 @@ const Footer = () => {
                 <li>
                   <Link
                     className="hover:underline hover:dark:text-pink-300"
-                    href={""}
+                    href={"https://maps.app.goo.gl/Dd9RUbqNH9Z3k9DP8"}
                   >
                     Map
                   </Link>
